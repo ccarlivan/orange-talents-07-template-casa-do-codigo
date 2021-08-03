@@ -19,7 +19,7 @@ public class Autor {
     private String nome;
     @NotBlank
     @Email
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @NotBlank @Length(max = 400)
     @Column(nullable = false)
