@@ -3,10 +3,12 @@ package br.com.zupacademy.carlivan.casadocodigo.controller.form;
 import br.com.zupacademy.carlivan.casadocodigo.model.Autor;
 import br.com.zupacademy.carlivan.casadocodigo.model.Categoria;
 import br.com.zupacademy.carlivan.casadocodigo.model.Livro;
+import br.com.zupacademy.carlivan.casadocodigo.validation.ExistId;
 import br.com.zupacademy.carlivan.casadocodigo.validation.UniqueValue;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.*;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -22,7 +24,7 @@ public class LivroForm {
     private String resumo;
     private String sumario;
     @DecimalMin(value = "20")
-    private double preco;
+    private BigDecimal preco;
     @Min(value = 100)
     private int paginas;
     @NotBlank
@@ -31,10 +33,12 @@ public class LivroForm {
     @Future
     @NotNull
     private Date dataPublicacao;
+    @ExistId(domainClass = Categoria.class, fieldName = "id")
     private Long idCategoria;
+    @ExistId(domainClass = Autor.class, fieldName = "id")
     private Long idAutor;
 
-    public LivroForm(String titulo, String resumo, String sumario, double preco, int paginas, String isbn,
+    public LivroForm(String titulo, String resumo, String sumario, BigDecimal preco, int paginas, String isbn,
                      String dataPublicacao, Long idCategoria, Long idAutor) throws ParseException {
 
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -81,7 +85,7 @@ public class LivroForm {
         return sumario;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 

@@ -2,6 +2,7 @@ package br.com.zupacademy.carlivan.casadocodigo.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -16,7 +17,7 @@ public class Livro {
     private String resumo;
     private String sumario;
     @DecimalMin(value = "20")
-    private double preco;
+    private BigDecimal preco;
     @Min(value = 100)
     private int paginas;
     @NotBlank
@@ -27,7 +28,7 @@ public class Livro {
     @ManyToOne
     private Autor autor;
 
-    public Livro(String titulo, String resumo, String sumario, double preco,
+    public Livro(String titulo, String resumo, String sumario, BigDecimal preco,
                  int paginas, String isbn, Date dataPublicacao, Categoria categoria, Autor autor) {
         this.titulo = titulo;
         this.resumo = resumo;
@@ -41,4 +42,12 @@ public class Livro {
     }
 
     public Livro() {    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 }
