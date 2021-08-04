@@ -39,4 +39,12 @@ public class Autor {
 
     public Autor() {
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
