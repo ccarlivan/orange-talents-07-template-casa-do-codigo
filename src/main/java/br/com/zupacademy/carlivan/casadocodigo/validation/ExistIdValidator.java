@@ -28,7 +28,7 @@ public class ExistIdValidator implements ConstraintValidator<ExistId, Long> {
 
 
         List<?> list = query.getResultList();
-        Assert.isTrue(list.size() <=1, "aconteceu algo bizarro e você tem mais de um "+klass+" com o atributo "+domainAttribute+" com o valor = "+value);
+        Assert.isTrue(list.size() <=1, "Já existe!");
 
         return !list.isEmpty();
     }

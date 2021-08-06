@@ -5,6 +5,7 @@ import br.com.zupacademy.carlivan.casadocodigo.model.Categoria;
 import br.com.zupacademy.carlivan.casadocodigo.model.Livro;
 import br.com.zupacademy.carlivan.casadocodigo.validation.ExistId;
 import br.com.zupacademy.carlivan.casadocodigo.validation.UniqueValue;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.*;
@@ -33,6 +34,7 @@ public class LivroForm {
     private String isbn;
     @Future
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private Date dataPublicacao;
     @ExistId(domainClass = Categoria.class, fieldName = "id")
     private Long idCategoria;
